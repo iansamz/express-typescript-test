@@ -18,10 +18,6 @@ riderBlock.onmouseout = function () {
   riderBlock.classList.remove("active-item");
 };
 
-window.onLoad = function () {
-  riderBlock.classList.add("active-item");
-};
-
 // fare estimate section
 
 var vejpaBlock = document.getElementById("vejpaImage"),
@@ -44,4 +40,70 @@ carBlock.onclick = function () {
 getEstimateBlock.onclick = function () {
   // TODO go to estimate page
   // pass whether vejpa or car
+};
+
+// custom slider to be done better later
+// just change active on buttons class
+// change class left right and transform
+
+// get buttons and slides
+var buttons = document.getElementsByClassName("image-gallery-bullet");
+var slides = document.getElementsByClassName("image-gallery-slide");
+
+function slider() {
+  // action for slider
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].onclick = function () {
+      // remove all buttons/slides active/center classes
+      for (let t = 0; t < buttons.length; t++) {
+        if (t !== i) {
+          buttons[t].classList.remove("active");
+          slides[t].classList.remove("center");
+        }
+        slides[t].classList.remove("left");
+        slides[t].classList.remove("right");
+        slides[t].classList.add("ordinaryStyle");
+      }
+
+      //add the center and active classes
+      buttons[i].classList.add("active");
+
+      let l = i - 1;
+      let r = i + 1;
+      let end = slides.length - 1;
+
+      let left = l >= 0 ? l : end;
+      let right = r <= end ? r : 0;
+
+      addLeftStyles(left);
+      addRightStyles(right);
+      addCenterStyles(i);
+    };
+  }
+}
+
+slider();
+
+function addCenterStyles(o) {
+  slides[o].classList.add("center");
+  removeOrdinary(o);
+}
+
+function addLeftStyles(o) {
+  slides[o].classList.add("left");
+  removeOrdinary(o);
+}
+
+function addRightStyles(o) {
+  slides[o].classList.add("right");
+  removeOrdinary(o);
+}
+
+function removeOrdinary(o) {
+  slides[o].classList.remove("ordinaryStyle");
+}
+
+window.onLoad = function () {
+  riderBlock.classList.add("active-item");
+  this.slider();
 };
