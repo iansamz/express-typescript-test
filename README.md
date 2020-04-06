@@ -1,4 +1,4 @@
-# Express TypeScript Test
+# Express TypeScript
 
 To run in development mode
 
@@ -10,4 +10,10 @@ To build
 
 ```bash
 npm run build
+```
+
+To Run on Server
+
+```bash
+npm run start
 ```
