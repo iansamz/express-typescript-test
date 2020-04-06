@@ -16,6 +16,7 @@ class IndexController implements IControllerBase {
     this.router.get("/contact", this.contact);
     this.router.get("/privacy-policy", this.privacy);
     this.router.get("/terms-of-service", this.terms);
+    this.router.get("/ride", this.ride);
   }
 
   index = (req: Request, res: Response) => {
@@ -36,6 +37,10 @@ class IndexController implements IControllerBase {
 
   terms = (req: Request, res: Response) => {
     res.render("terms-of-service", { title: "Terms of Service" });
+  };
+
+  ride = (req: Request, res: Response) => {
+    res.render("ride", { title: "Ride" });
   };
 }
 
