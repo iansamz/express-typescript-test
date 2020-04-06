@@ -59,9 +59,12 @@ function slider() {
         if (t !== i) {
           buttons[t].classList.remove("active");
           slides[t].classList.remove("center");
+          slides[t].classList.remove("centerStyle");
         }
         slides[t].classList.remove("left");
+        slides[t].classList.remove("leftStyle");
         slides[t].classList.remove("right");
+        slides[t].classList.remove("rightStyle");
         slides[t].classList.add("ordinaryStyle");
       }
 
@@ -86,16 +89,19 @@ slider();
 
 function addCenterStyles(o) {
   slides[o].classList.add("center");
+  slides[o].classList.add("centerStyle");
   removeOrdinary(o);
 }
 
 function addLeftStyles(o) {
   slides[o].classList.add("left");
+  slides[o].classList.add("leftStyle");
   removeOrdinary(o);
 }
 
 function addRightStyles(o) {
   slides[o].classList.add("right");
+  slides[o].classList.add("rightStyle");
   removeOrdinary(o);
 }
 
